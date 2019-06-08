@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -17,12 +18,15 @@ public class Silph {
 	private List<Funzionario> funzionari;
 	
 	@OneToMany
+	@JoinColumn(name = "silph_id")
 	private List<Richiesta> richieste;
 	
 	@OneToMany
+	@JoinColumn(name = "silph_id")
 	private List<Album> album;
 	
 	@OneToMany
+	@JoinColumn(name = "silph_id")
 	private List<Fotografo> fotografi;
 	
 	public String getNome() {
