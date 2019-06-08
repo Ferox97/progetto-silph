@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import it.uniroma3.siw.payload.UploadFileResponse;
-//import com.example.filedemo.service.FileStorageService;
+import it.uniroma3.siw.service.FileStorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class FotografiaController {
 		return "fotografiaForm.html";
 	}
 	
-	private static final Logger logger = LoggerFactory.getLogger(FileController.class);
+	private static final Logger logger = LoggerFactory.getLogger(FotografiaController.class); //Qua era File.Controller
 
     @Autowired
     private FileStorageService fileStorageService;

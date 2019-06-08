@@ -1,7 +1,7 @@
-package it.uiniroma3.siw.service;
+package it.uniroma3.siw.service;
 
-import com.example.filedemo.exception.FileStorageException;
-import com.example.filedemo.exception.MyFileNotFoundException;
+import it.uniroma3.siw.exception.FileStorageException;
+import it.uniroma3.siw.exception.MyFileNotFoundException;
 import it.uniroma3.siw.property.FileStorageProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
