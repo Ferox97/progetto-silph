@@ -10,9 +10,6 @@ import it.uniroma3.siw.model.Fotografia;
 import it.uniroma3.siw.repository.FotografiaRepository;
 
 
-import java.util.Optional;
-
-
 @Service
 public class FotografiaService {
 
