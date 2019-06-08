@@ -9,42 +9,46 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Fotografia {
 
-	
-	@Id
-	private String id;
-	
-	
-	public Fotografia () {}
-	
-	
-	public Fotografia(String id) {
-		super();
-		this.id = id;
-	}
+    @Id
+    private String id;
+    private String descrizione;
 
-	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+    @ManyToOne
+    private Album album;
 
-	public Album getAlbum() {
-		return album;
-	}
+    @ManyToOne
+    private Fotografo fotografo;
 
-	public void setAlbum(Album album) {
-		this.album = album;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public Fotografo getFotografo() {
-		return fotografo;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setFotografo(Fotografo fotografo) {
-		this.fotografo = fotografo;
-	}
+    public String getDescrizione() {
+        return descrizione;
+    }
 
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
+    }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
+
+    public Fotografo getFotografo() {
+        return fotografo;
+    }
+
+    public void setFotografo(Fotografo fotografo) {
+        this.fotografo = fotografo;
+    }
 
 }
