@@ -4,9 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-
 public class Fotografia {
 
 	
@@ -30,6 +30,21 @@ public class Fotografia {
 		this.id = id;
 	}
 
+	public Album getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(Album album) {
+		this.album = album;
+	}
+
+	public Fotografo getFotografo() {
+		return fotografo;
+	}
+
+	public void setFotografo(Fotografo fotografo) {
+		this.fotografo = fotografo;
+	}
 
 
 }
