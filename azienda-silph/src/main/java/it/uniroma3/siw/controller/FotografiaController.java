@@ -22,7 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestController
+@Controller
 public class FotografiaController {
 
 	
@@ -38,6 +38,7 @@ public class FotografiaController {
     private FileStorageService fileStorageService;
     
     @PostMapping("/uploadFile")
+    @ResponseBody
     public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
         String fileName = fileStorageService.storeFile(file);
 
@@ -51,6 +52,7 @@ public class FotografiaController {
     }
     
     @PostMapping("/uploadMultipleFiles")
+    @ResponseBody
     public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
         return Arrays.asList(files)
                 .stream()
@@ -59,6 +61,7 @@ public class FotografiaController {
     }
 
     @GetMapping("/downloadFile/{fileName:.+}")
+    @ResponseBody
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
         // Load file as Resource
         Resource resource = fileStorageService.loadFileAsResource(fileName);
