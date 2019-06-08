@@ -32,8 +32,8 @@ public class FotografiaController {
 
 	
 	@RequestMapping("/addFotografia")
-	public String addStudente(Model model) {
-		//model.addAttribute("fotografia", new Fotografia());
+	public String addFotografia(Model model) {
+		model.addAttribute("fotografia", new Fotografia());
 		return "fotografiaForm.html";
 	}
 	

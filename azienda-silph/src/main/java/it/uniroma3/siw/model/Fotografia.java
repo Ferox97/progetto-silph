@@ -17,6 +17,12 @@ public class Fotografia {
 
     @ManyToOne
     private Fotografo fotografo;
+    
+    public Fotografia() {}
+    
+    public Fotografia(String id) {
+    this.id = id;
+    }
 
     public String getId() {
         return id;
