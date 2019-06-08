@@ -4,8 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import it.uniroma3.siw.model.Fotografia;
 import it.uniroma3.siw.payload.UploadFileResponse;
 import it.uniroma3.siw.service.FileStorageService;
+import it.uniroma3.siw.service.FotografiaService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.ui.Model;
+
 @Controller
 public class FotografiaController {
 
@@ -37,10 +42,15 @@ public class FotografiaController {
     @Autowired
     private FileStorageService fileStorageService;
     
+    @Autowired
+    private FotografiaService fotografiaService;
+    
     @PostMapping("/uploadFile")
     @ResponseBody
     public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
         String fileName = fileStorageService.storeFile(file);
+        
+        fotografiaService.inserisci(new Fotografia(file.getOriginalFilename()));
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
