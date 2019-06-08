@@ -11,7 +11,6 @@ public class Fotografia {
 
     @Id
     private String id;
-    private String descrizione;
 
     @ManyToOne
     private Album album;
