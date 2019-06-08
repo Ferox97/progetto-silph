@@ -31,14 +31,14 @@ import org.springframework.ui.Model;
 public class FotografiaController {
 
 	
-	@RequestMapping("/addFotografia")
-	public String addFotografia(Model model) {
-		model.addAttribute("fotografia", new Fotografia());
-		return "fotografiaForm.html";
-	}
+//	@RequestMapping("/addFotografia")
+//	public String addFotografia() {
+//		return "fotografiaForm.html";
+//	}
 	
 	@RequestMapping("/showFotografie")
 	public String showFotografie(Model model) {
+		model.addAttribute("fotografie", this.fotografiaService.tutti());
 		return "fotografie.html";
 	}
 	
@@ -52,11 +52,10 @@ public class FotografiaController {
     
     @PostMapping("/uploadFile")
     @ResponseBody
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file , Model model) {
+    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
         String fileName = fileStorageService.storeFile(file);
         
         fotografiaService.inserisci(new Fotografia(file.getOriginalFilename()));
-        model.addAttribute("fotografie", this.fotografiaService.tutti());
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
@@ -67,14 +66,14 @@ public class FotografiaController {
                 file.getContentType(), file.getSize());
     }
     
-//    @PostMapping("/uploadMultipleFiles")
-//    @ResponseBody
-//    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
-//    	return Arrays.asList(files)
-//    			.stream()
-//    			.map(file -> uploadFile(file))
-//    			.collect(Collectors.toList());
-//    }
+    @PostMapping("/uploadMultipleFiles")
+    @ResponseBody
+    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
+    	return Arrays.asList(files)
+    			.stream()
+    			.map(file -> uploadFile(file))
+    			.collect(Collectors.toList());
+    }
 
     @GetMapping("/downloadFile/{fileName:.+}")
     @ResponseBody
