@@ -37,6 +37,11 @@ public class FotografiaController {
 		return "fotografiaForm.html";
 	}
 	
+	@RequestMapping("/showFotografie")
+	public String showFotografie(Model model) {
+		return "fotografie.html";
+	}
+	
 	private static final Logger logger = LoggerFactory.getLogger(FotografiaController.class); //Qua era File.Controller
 
     @Autowired
@@ -47,10 +52,11 @@ public class FotografiaController {
     
     @PostMapping("/uploadFile")
     @ResponseBody
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
+    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file , Model model) {
         String fileName = fileStorageService.storeFile(file);
         
         fotografiaService.inserisci(new Fotografia(file.getOriginalFilename()));
+        model.addAttribute("fotografie", this.fotografiaService.tutti());
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
@@ -61,14 +67,14 @@ public class FotografiaController {
                 file.getContentType(), file.getSize());
     }
     
-    @PostMapping("/uploadMultipleFiles")
-    @ResponseBody
-    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
-        return Arrays.asList(files)
-                .stream()
-                .map(file -> uploadFile(file))
-                .collect(Collectors.toList());
-    }
+//    @PostMapping("/uploadMultipleFiles")
+//    @ResponseBody
+//    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
+//    	return Arrays.asList(files)
+//    			.stream()
+//    			.map(file -> uploadFile(file))
+//    			.collect(Collectors.toList());
+//    }
 
     @GetMapping("/downloadFile/{fileName:.+}")
     @ResponseBody

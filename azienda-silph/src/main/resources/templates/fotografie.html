@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<body>
+	<div>
+		<h4>Fotografie</h4>
+		<ul>
+			<!-- Finchè trovi uno studente, stampa una lista puntata -->
+			<li th:each="fotografia : ${fotografie}"> 
+				<!-- Viene stampato un link -->
+				<!-- Il link lo costruiamo noi, con il nome dello studente, 
+					abbiamo indicato che sia il controller a gestire la richiesta,
+					con una get-->
+				<!-- Al posto di paolo (valore fittizio), 
+					compare ciò che ho specificato in th:text -->
+				<a
+				th:href="@{'/studente' + '/' + ${studente.id}}"
+				th:text="${fotografia.id}"> paolo</a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
