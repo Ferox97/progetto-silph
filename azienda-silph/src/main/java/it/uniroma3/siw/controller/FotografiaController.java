@@ -2,7 +2,6 @@ package it.uniroma3.siw.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import it.uniroma3.siw.model.Fotografia;
 import it.uniroma3.siw.payload.UploadFileResponse;
@@ -31,12 +30,12 @@ import org.springframework.ui.Model;
 public class FotografiaController {
 
 	
-//	@RequestMapping("/addFotografia")
-//	public String addFotografia() {
-//		return "fotografiaForm.html";
-//	}
+	@RequestMapping("/addFotografia")
+	public String addFotografia() {
+		return "fotografiaForm.html";
+	}
 	
-	@RequestMapping("/showFotografie")
+	@RequestMapping(value = "/showFotografie")
 	public String showFotografie(Model model) {
 		model.addAttribute("fotografie", this.fotografiaService.tutti());
 		return "fotografie.html";
