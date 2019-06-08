@@ -26,14 +26,6 @@ public class Fotografia {
         this.id = id;
     }
 
-    public String getDescrizione() {
-        return descrizione;
-    }
-
-    public void setDescrizione(String descrizione) {
-        this.descrizione = descrizione;
-    }
-
     public Album getAlbum() {
         return album;
     }
