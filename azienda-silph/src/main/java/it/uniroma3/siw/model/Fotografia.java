@@ -9,14 +9,19 @@ import javax.persistence.Id;
 
 public class Fotografia {
 
+	
 	@Id
 	private String id;
-
+	
+	
+	public Fotografia () {}
+	
+	
 	public Fotografia(String id) {
 		super();
 		this.id = id;
 	}
-	
+
 	
 	public String getId() {
 		return id;
