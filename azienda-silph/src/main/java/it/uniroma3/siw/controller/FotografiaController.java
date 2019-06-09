@@ -2,9 +2,9 @@ package it.uniroma3.siw.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
 import it.uniroma3.siw.model.Fotografia;
-import it.uniroma3.siw.model.FotografiaForm;
 import it.uniroma3.siw.payload.UploadFileResponse;
 import it.uniroma3.siw.service.FileStorageService;
 import it.uniroma3.siw.service.FotografiaService;
@@ -19,20 +19,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
-import org.springframework.ui.Model;
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
+
 
 @Controller
 public class FotografiaController {
 
 	
 	@RequestMapping("/addFotografia")
-	public String addFotografia() {
+	public String addFotografia(Model model) {
+		model.addAttribute("fotografia" , new Fotografia());
 		return "fotografiaForm.html";
 	}
 	
@@ -50,24 +51,43 @@ public class FotografiaController {
     @Autowired
     private FotografiaService fotografiaService;
     
-    @PostMapping("/uploadFile")
-    @ResponseBody
-    //public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
-    public UploadFileResponse uploadFile(@ModelAttribute FotografiaForm fotografia) {
+//    @PostMapping("/uploadFile")
+//    @ResponseBody
+//    //public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
+//    public UploadFileResponse uploadFile(@ModelAttribute FotografiaForm fotografia) {
+//    	
+//    	
+//    	
+//        String fileName = fileStorageService.storeFile(fotografia.getFile());
+//        
+//        fotografiaService.inserisci(new Fotografia( fotografia.getFile().getOriginalFilename() , fotografia.getNome() , fotografia.getDescrizione()));
+//
+//        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+//                .path("/downloadFile/")
+//                .path(fileName)
+//                .toUriString();
+//
+//        return new UploadFileResponse(fileName, fileDownloadUri,
+//        		fotografia.getFile().getContentType(), fotografia.getFile().getSize());
+//    }
+    
+    @RequestMapping(value="/uploadFoto", method = RequestMethod.POST)
+    public String newFoto(@Valid @ModelAttribute("fotografia") Fotografia fotografia, Model model, BindingResult bindingResult, 
+        @RequestParam("file") MultipartFile file) {
     	
+    	String fileName = fileStorageService.storeFile(file);
     	
-    	
-        String fileName = fileStorageService.storeFile(fotografia.getFile());
-        
-        fotografiaService.inserisci(new Fotografia( fotografia.getFile().getOriginalFilename() , fotografia.getNome() , fotografia.getDescrizione()));
+    	fotografia.setId(fileName);
 
+        this.fotografiaService.inserisci(fotografia); //esegui il persistence
+ 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
                 .path(fileName)
                 .toUriString();
-
-        return new UploadFileResponse(fileName, fileDownloadUri,
-        		fotografia.getFile().getContentType(), fotografia.getFile().getSize());
+        
+      return "ciao.html";
+    		  //new UploadFileResponse(fileName, fileDownloadUri, file.getContentType(), file.getSize());
     }
 
     @GetMapping("/downloadFile/{fileName:.+}")

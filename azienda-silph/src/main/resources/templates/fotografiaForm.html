@@ -20,23 +20,40 @@
 		<div class="upload-content">
 			<div class="single-upload">
 				<h3>Carica la tua foto</h3>
-				
-				<form id="singleUploadForm" name="singleUploadForm">
-					<input id="singleFileUploadInput" type="file" name="file"
-						class="file-input" required /> <br>
-						
-						
-								<input id="nome" type="text" name="nome"
-						class="file-input" required /> <br>
-							
-							
-								<input id="descrizione" type="text" name="descrizione"
-						class="file-input" required /> <br>
-						
 
-					<button type="submit" class="primary submit-btn">Invia
-						Immagine</button>
+
+				<form id="singleUploadForm" name="singleUploadForm"
+					th:action="@{/uploadFoto}" th:object="${fotografia}" method="post"
+					enctype="multipart/form-data">
+
+					<h3 class="text-center text-info">Inserisci foto</h3>
+
+					<div class="form-group">
+						<label for="nome" class="text-info">Nome:</label><br> <input
+							type="text" name="nome" id="nome" class="form-control"
+							th:field="*{nome}">
+					</div>
+
+					<div class="form-group">
+						<label for="descrizione" class="text-info">Descrizione:</label><br>
+						<textarea class="form-control" name="descrizione" id="descrizione"
+							rows="3" th:field="*{descrizione}"></textarea>
+					</div>
+
+					<div class="form-group">
+						<label for="file"></label> <input type="file"
+							class="form-control-file" id="file" name="file">
+					</div>
+
+					<div class="form-group">
+						<input type="submit" name="submit" class="btn btn-info btn-md"
+							value="Upload">
+					</div>
+
 				</form>
+
+
+
 
 				<div class="upload-response">
 					<div id="singleFileUploadError"></div>
@@ -46,7 +63,6 @@
 			</div>
 
 			<form th:action="@{/showFotografie}" method="GET">
-
 				<table>
 
 					<tr>
