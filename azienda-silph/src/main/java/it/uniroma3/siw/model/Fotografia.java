@@ -14,11 +14,11 @@ public class Fotografia {
     
     private String descrizione;
 
-    @ManyToOne
-    private Album album;
+    //@ManyToOne
+    //private Album album;
 
-    @ManyToOne
-    private Fotografo fotografo;
+    //@ManyToOne
+    //private Fotografo fotografo;
     
     public Fotografia() {}
     
@@ -61,24 +61,24 @@ public class Fotografia {
 	}
 
 
-	public Album getAlbum() {
-		return album;
-	}
-
-
-	public void setAlbum(Album album) {
-		this.album = album;
-	}
-
-
-	public Fotografo getFotografo() {
-		return fotografo;
-	}
-
-
-	public void setFotografo(Fotografo fotografo) {
-		this.fotografo = fotografo;
-	}
+//	public Album getAlbum() {
+//		return album;
+//	}
+//
+//
+//	public void setAlbum(Album album) {
+//		this.album = album;
+//	}
+//
+//
+//	public Fotografo getFotografo() {
+//		return fotografo;
+//	}
+//
+//
+//	public void setFotografo(Fotografo fotografo) {
+//		this.fotografo = fotografo;
+//	}
 
     
     }
