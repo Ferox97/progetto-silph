@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
+
 <head>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -19,9 +20,19 @@
 		<div class="upload-content">
 			<div class="single-upload">
 				<h3>Carica la tua foto</h3>
+				
 				<form id="singleUploadForm" name="singleUploadForm">
 					<input id="singleFileUploadInput" type="file" name="file"
 						class="file-input" required /> <br>
+						
+						
+								<input id="nome" type="text" name="nome"
+						class="file-input" required /> <br>
+							
+							
+								<input id="descrizione" type="text" name="descrizione"
+						class="file-input" required /> <br>
+						
 
 					<button type="submit" class="primary submit-btn">Invia
 						Immagine</button>

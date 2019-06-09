@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import it.uniroma3.siw.model.Fotografia;
+import it.uniroma3.siw.model.FotografiaForm;
 import it.uniroma3.siw.payload.UploadFileResponse;
 import it.uniroma3.siw.service.FileStorageService;
 import it.uniroma3.siw.service.FotografiaService;
@@ -51,12 +52,14 @@ public class FotografiaController {
     
     @PostMapping("/uploadFile")
     @ResponseBody
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {	
+    //public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
+    public UploadFileResponse uploadFile(@ModelAttribute FotografiaForm fotografia) {
     	
     	
-        String fileName = fileStorageService.storeFile(file);
+    	
+        String fileName = fileStorageService.storeFile(fotografia.getFile());
         
-        fotografiaService.inserisci(new Fotografia( file.getOriginalFilename() , "?" , "?"));
+        fotografiaService.inserisci(new Fotografia( fotografia.getFile().getOriginalFilename() , fotografia.getNome() , fotografia.getDescrizione()));
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
@@ -64,7 +67,7 @@ public class FotografiaController {
                 .toUriString();
 
         return new UploadFileResponse(fileName, fileDownloadUri,
-                file.getContentType(), file.getSize());
+        		fotografia.getFile().getContentType(), fotografia.getFile().getSize());
     }
 
     @GetMapping("/downloadFile/{fileName:.+}")
