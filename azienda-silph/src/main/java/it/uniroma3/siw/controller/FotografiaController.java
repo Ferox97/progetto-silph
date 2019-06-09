@@ -51,10 +51,12 @@ public class FotografiaController {
     
     @PostMapping("/uploadFile")
     @ResponseBody
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
+    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {	
+    	
+    	
         String fileName = fileStorageService.storeFile(file);
         
-        fotografiaService.inserisci(new Fotografia(file.getOriginalFilename()));
+        fotografiaService.inserisci(new Fotografia( file.getOriginalFilename() , "?" , "?"));
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
@@ -63,15 +65,6 @@ public class FotografiaController {
 
         return new UploadFileResponse(fileName, fileDownloadUri,
                 file.getContentType(), file.getSize());
-    }
-    
-    @PostMapping("/uploadMultipleFiles")
-    @ResponseBody
-    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
-    	return Arrays.asList(files)
-    			.stream()
-    			.map(file -> uploadFile(file))
-    			.collect(Collectors.toList());
     }
 
     @GetMapping("/downloadFile/{fileName:.+}")

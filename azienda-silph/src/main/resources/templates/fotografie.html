@@ -4,19 +4,21 @@
 <body>
 	<div>
 		<h4>Fotografie</h4>
+		
 		<ul>
 			<!-- Finchè trovi uno studente, stampa una lista puntata -->
+			
 			<li th:each="fotografia : ${fotografie}"> 
-				<!-- Viene stampato un link -->
-				<!-- Il link lo costruiamo noi, con il nome dello studente, 
-					abbiamo indicato che sia il controller a gestire la richiesta,
-					con una get-->
-				<!-- Al posto di paolo (valore fittizio), 
-					compare ciò che ho specificato in th:text -->
+			
+				<div th:text="${fotografia.nome}">Oranges </div>
+
+				<div th:text="${fotografia.descrizione}">Oranges </div>
+
+				<img width="200" height="200" th:src="@{'upload' + '/' + ${fotografia.id}}"/>
 				
-				<div th:text="${fotografia.id}">Oranges </div>
 			</li>
 		</ul>
+		
 	</div>
 </body>
 </html>
