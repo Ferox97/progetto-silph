@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+
+<head>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+<title>Inserimento Album</title>
+</head>
+<body>
+	<div>
+		<h4>Inserisci i dati di un Album</h4>
+	</div>
+	<form th:action="@{/addAlbum}" th:method="post" th:object="${album}">
+		<table>
+			<tr>
+				<td>Nome:</td>
+				<td><input type="text" th:field="*{nome}" />
+			</tr>
+			<tr>
+				<td>Descrizione:</td>
+				<td><input type=text th:field="*{descrizione}" /></td>
+
+			</tr>
+			<tr>
+				<td>
+					<button type="submit">Invio</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
