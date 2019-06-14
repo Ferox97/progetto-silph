@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+
+<head>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+<title>Inserimento di uno studente</title>
+</head>
+
+<body>
+	<div>
+		<h4>Inserisci i dati di uno studente</h4>
+	</div>
+
+	<form th:action="@{/uploadFoto}" th:method="post"
+		th:object="${fotografia}" enctype="multipart/form-data">
+
+		<table>
+			<tr>
+				<td>Nome:</td>
+				<td><input type="text" th:field="*{nome}" />
+			</tr>
+			<tr>
+				<td>Descrizione:</td>
+				<td><input type=text th:field="*{descrizione}" /></td>
+
+			</tr>
+
+			<tr>
+				<td>Allega la foto:</td>
+				<td><input type="file" id="file" name="file"></td>
+
+			</tr>
+
+			<tr>
+				<td>
+					<button type="submit">Invio</button>
+				</td>
+			</tr>
+
+		</table>
+
+	</form>
+
+	<form th:action="@{/showFotografie}" method="GET">
+	
+		<table>
+
+			<tr>
+				<td>
+					<button type="submit">Bottone temporaneo per visione di
+						tutte le immagini nel DB</button>
+				</td>
+
+			</tr>
+
+		</table>
+
+	</form>
+
+</body>
+</html>
+<!--  -->
