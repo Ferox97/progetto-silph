@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+<title>Inserimento Richiesta</title>
 </head>
 <body>
-
+	<div>
+		<h4>Inserisci i dati di una Richiesta</h4>
+	</div>
+	<form th:action="@{/addRichiesta}" th:method="post" th:object="${richiesta}">
+		<table>
+			<tr>
+				<td>Richiedente:</td>
+				<td><input type="text" th:field="*{richiedente}" />
+			</tr>
+			<tr>
+				<td>Mail:</td>
+				<td><input type=text th:field="*{mail}" /></td>
+			</tr>
+			<tr>
+				<td>
+					<button type="submit">Invio</button>
+				</td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>
