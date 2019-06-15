@@ -3,11 +3,9 @@
 	xmlns="http://www.w3.org/1999/html">
 <body>
 	<div>
-		<h4>Fotografie</h4>
+		<h1>Fotografie</h1>
 		
 		<ul>
-			<!-- Finchè trovi uno studente, stampa una lista puntata -->
-			
 			<li th:each="fotografia : ${fotografie}"> 
 			
 				<div th:text="${fotografia.nome}">Oranges </div>
