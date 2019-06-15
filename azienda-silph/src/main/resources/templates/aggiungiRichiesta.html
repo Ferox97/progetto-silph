@@ -17,11 +17,17 @@
 			<tr>
 				<td>Richiedente:</td>
 				<td><input type="text" th:field="*{richiedente}" />
+				<td th:if="${#fields.hasErrors('richiedente')}" th:errors="*{richiedente}"></td>
 			</tr>
 			<tr>
 				<td>Mail:</td>
-				<td><input type=text th:field="*{mail}" /></td>
+				<td><input type="text" th:field="*{mail}" /></td>
+				<td th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></td>
 			</tr>
+			<tr>
+			<td>Dettagli:</td>
+			<td><input type="text" th:field="*{dettaglioRichiesta}" /></td>
+			<td th:if="${#fields.hasErrors('dettaglioRichiesta')}" th:errors="*{dettaglioRichiesta}"></td>
 			<tr>
 				<td>
 					<button type="submit">Invio</button>

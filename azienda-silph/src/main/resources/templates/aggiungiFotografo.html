@@ -17,10 +17,12 @@
 			<tr>
 				<td>Nome:</td>
 				<td><input type="text" th:field="*{nome}" />
+				<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
 			</tr>
 			<tr>
 				<td>Cognome:</td>
-				<td><input type=text th:field="*{cognome}" /></td>
+				<td><input type="text" th:field="*{cognome}" /></td>
+				<td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
 
 			</tr>
 			<tr>
