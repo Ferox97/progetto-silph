@@ -18,9 +18,6 @@ public class Fotografo {
 	private String cognome;
 	
 	@OneToMany(mappedBy = "fotografo")
-	private List<Album> album;
-	
-	@OneToMany(mappedBy = "fotografo")
 	private List<Fotografia> fotografie;
 	
 
@@ -46,14 +43,6 @@ public class Fotografo {
 
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
-	}
-
-	public List<Album> getAlbum() {
-		return album;
-	}
-
-	public void setAlbum(List<Album> album) {
-		this.album = album;
 	}
 
 	public List<Fotografia> getFotografie() {
