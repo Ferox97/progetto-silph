@@ -21,14 +21,17 @@ public class Fotografia {
     @ManyToOne
     private Fotografo fotografo;
     
-    public Fotografia() {}
     
+    public Fotografia() {
+	}
 
-    public Fotografia(String id, String nome, String descrizione) {
+
+	public Fotografia(String id, String nome, String descrizione , Album album) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.descrizione = descrizione;
+		this.album=album;
 	}
 
 

@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import it.uniroma3.siw.model.Fotografia;
 import it.uniroma3.siw.model.FotografiaForm;
 import it.uniroma3.siw.payload.UploadFileResponse;
+import it.uniroma3.siw.service.AlbumService;
 import it.uniroma3.siw.service.FileStorageService;
 import it.uniroma3.siw.service.FotografiaService;
 import it.uniroma3.siw.service.FotografiaFormValidator;
@@ -39,11 +40,13 @@ public class FotografiaController {
 		return "aggiungiFoto.html";
 	}
 	
-	@RequestMapping(value = "/showFotografie")
+	@GetMapping(value = "/allFotografie")
 	public String showFotografie(Model model) {
 		model.addAttribute("fotografie", this.fotografiaService.tutti());
 		return "fotografie.html";
 	}
+	
+
 	
 	//private static final Logger logger = LoggerFactory.getLogger(FotografiaController.class); //Qua era File.Controller
 
@@ -55,6 +58,9 @@ public class FotografiaController {
     
     @Autowired 
     private FotografiaFormValidator fotografiaFormValidator;
+    
+    @Autowired
+    private AlbumService albumService;
     
     @RequestMapping(value="/uploadFoto", method = RequestMethod.POST)
     public String newFoto(@Valid @ModelAttribute("fotografiaForm") FotografiaForm fotografiaForm, Model model, BindingResult bindingResult)  {
@@ -69,7 +75,7 @@ public class FotografiaController {
     	
     	String fileName = fileStorageService.storeFile(fotografiaForm.getFile());
     	
-    	Fotografia fotografia = new Fotografia(fileName , fotografiaForm.getNome() , fotografiaForm.getDescrizione() );
+    	Fotografia fotografia = new Fotografia(fileName , fotografiaForm.getNome() , fotografiaForm.getDescrizione() , albumService.findById(fotografiaForm.getAlbum_id()));
 
         this.fotografiaService.inserisci(fotografia); //esegui il persistence
  
