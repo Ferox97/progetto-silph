@@ -16,6 +16,7 @@ public class Richiesta {
 	private Long id;
 	private String richiedente;
 	private String mail;
+	private String dettaglioRichiesta;
 	
 	@ManyToMany
 	private List<Fotografia> fotografie;
@@ -50,5 +51,13 @@ public class Richiesta {
 
 	public void setFotografie(List<Fotografia> fotografie) {
 		this.fotografie = fotografie;
+	}
+
+	public String getDettaglioRichiesta() {
+		return dettaglioRichiesta;
+	}
+
+	public void setDettaglioRichiesta(String dettaglioRichiesta) {
+		this.dettaglioRichiesta = dettaglioRichiesta;
 	}
 }
