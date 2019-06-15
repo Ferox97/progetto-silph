@@ -14,25 +14,43 @@
 		<h1>Inserisci i dati di una Foto</h1>
 	</div>
 
-	<form th:action="@{/uploadFoto}" th:method="post"
-		th:object="${fotografia}" enctype="multipart/form-data">
+	<form th:action="@{/uploadFoto}" method="post"
+		th:object="${fotografiaForm}" enctype="multipart/form-data" >
 
 		<table>
 			<tr>
 				<td>Nome:</td>
-				<td><input type="text" th:field="*{nome}" />
+				<td><input type="text" th:field="*{nome}" /></td>
 				<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
+
 			</tr>
+			
 			<tr>
 				<td>Descrizione:</td>
 				<td><input type="text" th:field="*{descrizione}" /></td>
 				<td th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></td>
 
+
+			</tr>
+			
+			<tr>
+				<td>Album:</td>
+				<td><input type="text" th:field="*{album_id}" /></td>
+				<td th:if="${#fields.hasErrors('album_id')}" th:errors="*{album_id}"></td>
+
+			</tr>
+			
+			<tr>
+				<td>Descrizione:</td>
+				<td><input type="text" th:field="*{fotografo_id}" /></td>
+				<td th:if="${#fields.hasErrors('fotografo_id')}" th:errors="*{fotografo_id}"></td>
+
 			</tr>
 
 			<tr>
 				<td>Allega la foto:</td>
-				<td><input type="file" id="file" name="file"></td>
+				<td><input type="file" th:field="*{file}"></td>
+				<td th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></td>
 
 			</tr>
 

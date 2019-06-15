@@ -5,10 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
 import it.uniroma3.siw.model.Fotografia;
+import it.uniroma3.siw.model.FotografiaForm;
 import it.uniroma3.siw.payload.UploadFileResponse;
 import it.uniroma3.siw.service.FileStorageService;
 import it.uniroma3.siw.service.FotografiaService;
-import it.uniroma3.siw.service.FotografiaValidator;
+import it.uniroma3.siw.service.FotografiaFormValidator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +35,7 @@ public class FotografiaController {
 	
 	@RequestMapping("/aggiungiFotografia")
 	public String addFotografia(Model model) {
-		model.addAttribute("fotografia" , new Fotografia());
+		model.addAttribute("fotografiaForm" , new FotografiaForm());
 		return "aggiungiFoto.html";
 	}
 	
@@ -53,13 +54,12 @@ public class FotografiaController {
     private FotografiaService fotografiaService;
     
     @Autowired 
-    private FotografiaValidator fotografiaValidator;
+    private FotografiaFormValidator fotografiaFormValidator;
     
     @RequestMapping(value="/uploadFoto", method = RequestMethod.POST)
-    public String newFoto(@Valid @ModelAttribute("fotografia") Fotografia fotografia, Model model, BindingResult bindingResult, 
-        @RequestParam("file") MultipartFile file) {
+    public String newFoto(@Valid @ModelAttribute("fotografiaForm") FotografiaForm fotografiaForm, Model model, BindingResult bindingResult)  {
     	
-    	fotografiaValidator.validate(fotografia, bindingResult);
+    	fotografiaFormValidator.validate(fotografiaForm , bindingResult);
     	
     	if(bindingResult.hasErrors()) 
     		
@@ -67,15 +67,15 @@ public class FotografiaController {
     	
     	else {
     	
-    	String fileName = fileStorageService.storeFile(file);
+    	String fileName = fileStorageService.storeFile(fotografiaForm.getFile());
     	
-    	fotografia.setId(fileName);
+    	Fotografia fotografia = new Fotografia(fileName , fotografiaForm.getNome() , fotografiaForm.getDescrizione() );
 
         this.fotografiaService.inserisci(fotografia); //esegui il persistence
  
       return "fotografie.html";
       
-    	}
+    	}	
     }
 	
 }

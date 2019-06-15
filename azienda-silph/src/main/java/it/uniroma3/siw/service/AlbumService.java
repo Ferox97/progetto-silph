@@ -26,4 +26,9 @@ public class AlbumService {
 		return (List<Album>) albumRepository.findAll();
 	}
 
+	public boolean alreadyExistsById(Long album_id) {
+
+		return albumRepository.existsById(album_id);
+	}
+
 }
