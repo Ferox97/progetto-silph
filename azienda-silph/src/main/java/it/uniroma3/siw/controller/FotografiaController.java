@@ -8,6 +8,7 @@ import it.uniroma3.siw.model.Fotografia;
 import it.uniroma3.siw.payload.UploadFileResponse;
 import it.uniroma3.siw.service.FileStorageService;
 import it.uniroma3.siw.service.FotografiaService;
+import it.uniroma3.siw.service.FotografiaValidator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,9 +52,20 @@ public class FotografiaController {
     @Autowired
     private FotografiaService fotografiaService;
     
+    @Autowired 
+    private FotografiaValidator fotografiaValidator;
+    
     @RequestMapping(value="/uploadFoto", method = RequestMethod.POST)
     public String newFoto(@Valid @ModelAttribute("fotografia") Fotografia fotografia, Model model, BindingResult bindingResult, 
         @RequestParam("file") MultipartFile file) {
+    	
+    	fotografiaValidator.validate(fotografia, bindingResult);
+    	
+    	if(bindingResult.hasErrors()) 
+    		
+    		return "aggiungiFoto.html";
+    	
+    	else {
     	
     	String fileName = fileStorageService.storeFile(file);
     	
@@ -61,7 +73,9 @@ public class FotografiaController {
 
         this.fotografiaService.inserisci(fotografia); //esegui il persistence
  
-      return "aggiungiFoto.html";
+      return "fotografie.html";
+      
+    	}
     }
 	
 }
