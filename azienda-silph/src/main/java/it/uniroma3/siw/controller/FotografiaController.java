@@ -31,7 +31,7 @@ import javax.validation.Valid;
 public class FotografiaController {
 
 	
-	@RequestMapping("/addFotografia")
+	@RequestMapping("/aggiungiFotografia")
 	public String addFotografia(Model model) {
 		model.addAttribute("fotografia" , new Fotografia());
 		return "aggiungiFoto.html";
@@ -63,7 +63,5 @@ public class FotografiaController {
  
       return "aggiungiFoto.html";
     }
-
-
 	
 }

@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import it.uniroma3.siw.model.Fotografia;
 
 public interface FotografiaRepository extends CrudRepository<Fotografia,String> {
-	//findByDatiDaRecuperare(sarebbero le variabili)
+	
 
 }
