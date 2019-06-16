@@ -38,6 +38,8 @@ public class AlbumController {
 	public String mostraStudente(@PathVariable("id") Long id , Model model) {
 		
 		model.addAttribute("fotografie" , albumService.getFotoByAlbum(id));
+		model.addAttribute("nome" , albumService.findById(id).getNome());
+		model.addAttribute("descrizione" , albumService.findById(id).getDescrizione());
 		
 		return "fotografieAlbum.html";
 		
