@@ -43,7 +43,7 @@ public class FotografiaController {
 	@GetMapping(value = "/allFotografie")
 	public String showFotografie(Model model) {
 		model.addAttribute("fotografie", this.fotografiaService.tutti());
-		return "fotografieTest.html";
+		return "fotografie.html";
 	}
 	
 
