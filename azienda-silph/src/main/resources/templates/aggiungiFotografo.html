@@ -3,34 +3,81 @@
 	xmlns="http://www.w3.org/1999/html">
 
 <head>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Inserimento album</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link
+	href="https://cdn.jsdelivr.net/lightgallery/1.3.9/css/lightgallery.min.css"
+	rel="stylesheet">
+<style>
+body {
+	background-color: #152836
+}
 
-<title>Inserimento Fotografo</title>
+h2 {
+	color: #fff;
+	margin-bottom: 40px;
+	text-align: center;
+	font-weight: 100;
+}
+</style>
+
+<link rel="stylesheet" type="text/css"
+	href="../static/css/aggiungiAlbum.css"
+	th:href="@{/css/aggiungiAlbum.css}">
+<script src="../static/js/aggiungiAlbum.js"
+	th:src="@{/js/aggiungiAlbum.js}"></script>
+
 </head>
 <body>
-	<div>
-		<h1>Inserisci i dati di un Fotografo</h1>
-	</div>
-	<form th:action="@{/addFotografo}" th:method="post" th:object="${fotografo}">
-		<table>
-			<tr>
-				<td>Nome:</td>
-				<td><input type="text" th:field="*{nome}" />
-				<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
-			</tr>
-			<tr>
-				<td>Cognome:</td>
-				<td><input type="text" th:field="*{cognome}" /></td>
-				<td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
+	<div class="container-fluid">
+		<div class="container">
+			<div class="formBox">
+				<form th:action="@{/addFotografo}" th:method="post" th:object="${fotografo}">
+					<div class="row">
+						<div class="col-sm-12">
+							<h1>Nuovo Fotografo</h1>
+						</div>
+					</div>
 
-			</tr>
-			<tr>
-				<td>
-					<button type="submit">Invio</button>
-				</td>
-			</tr>
-		</table>
-	</form>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="inputBox ">
+								<div class="inputText"></div>
+								<input type="text" name="" class="input" placeholder="Nome"
+									th:field="*{nome}"> <span
+									th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+							</div>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="inputBox">
+								<div class="inputText"></div>
+								<input type="text" name="" class="input" placeholder="Cognome"
+									th:field="*{cognome}"> <span
+									th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-12">
+							<input type="submit" name="" class="button"
+								value="Conferma inserimento">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
