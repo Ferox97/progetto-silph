@@ -42,8 +42,11 @@ h2 {
 	<div class="container-fluid">
 		<div class="container">
 			<div class="formBox">
-				<form th:action="@{/addFotografia}" th:method="post"
-					th:object="${fotografiaForm}">
+			
+			
+				<form th:action="@{/uploadFoto}" th:method="post"
+					th:object="${fotografiaForm}" enctype="multipart/form-data">
+					
 					<div class="row">
 						<div class="col-sm-12">
 							<h1>Nuova Fotografia</h1>
@@ -106,6 +109,7 @@ h2 {
 								value="Conferma inserimento">
 						</div>
 					</div>
+					
 				</form>
 			</div>
 		</div>
