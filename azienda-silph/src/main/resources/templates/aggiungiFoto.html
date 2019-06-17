@@ -42,11 +42,11 @@ h2 {
 	<div class="container-fluid">
 		<div class="container">
 			<div class="formBox">
-			
-			
+
+
 				<form th:action="@{/uploadFoto}" th:method="post"
 					th:object="${fotografiaForm}" enctype="multipart/form-data">
-					
+
 					<div class="row">
 						<div class="col-sm-12">
 							<h1>Nuova Fotografia</h1>
@@ -58,8 +58,10 @@ h2 {
 							<div class="inputBox ">
 								<div class="inputText"></div>
 								<input type="text" name="" class="input" placeholder="Titolo"
-									th:field="*{nome}"> <span
-									th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+									th:field="*{nome}">
+								<div class="warning">
+									<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+								</div>
 							</div>
 						</div>
 
@@ -67,9 +69,11 @@ h2 {
 							<div class="inputBox">
 								<div class="inputText"></div>
 								<input type="text" name="" class="input"
-									placeholder="Descrizione" th:field="*{descrizione}"> <span
-									th:if="${#fields.hasErrors('descrizione')}"
-									th:errors="*{descrizione}"></span>
+									placeholder="Descrizione" th:field="*{descrizione}">
+								<div class="warning">
+									<span th:if="${#fields.hasErrors('descrizione')}"
+										th:errors="*{descrizione}"></span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -79,9 +83,11 @@ h2 {
 							<div class="inputBox ">
 								<div class="inputText"></div>
 								<input type="text" name="" class="input" placeholder="Album_id"
-									th:field="*{album_id}"> <span
-									th:if="${#fields.hasErrors('album_id')}"
-									th:errors="*{album_id}"></span>
+									th:field="*{album_id}">
+								<div class="warning">
+									<span th:if="${#fields.hasErrors('album_id')}"
+										th:errors="*{album_id}"></span>
+								</div>
 							</div>
 						</div>
 
@@ -90,17 +96,19 @@ h2 {
 								<div class="inputText"></div>
 								<input type="text" name="" class="input"
 									placeholder="Fotografo_id" th:field="*{fotografo_id}">
-								<span th:if="${#fields.hasErrors('fotografo_id')}"
-									th:errors="*{fotografo_id}"></span>
+								<div class="warning">
+									<span th:if="${#fields.hasErrors('fotografo_id')}"
+										th:errors="*{fotografo_id}"></span>
+								</div>
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="file btn btn-lg btn-primary">
-							<input type="file" th:field="*{file}"> <span
-								th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></span>
-						</div>
-					
+						<input type="file" th:field="*{file}"> <span
+							th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></span>
+					</div>
+
 					<p></p>
 
 					<div class="row">
@@ -109,10 +117,10 @@ h2 {
 								value="Conferma inserimento">
 						</div>
 					</div>
-					
+
 				</form>
 			</div>
 		</div>
-		</div>
+	</div>
 </body>
 </html>
