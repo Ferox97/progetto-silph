@@ -28,7 +28,7 @@ public class FotografoController {
 		return "aggiungiFotografo.html";
 	}
 	
-	@RequestMapping(value = "/showFotografi")
+	@RequestMapping(value = "/allFotografi")
 	public String showFotografi(Model model) {
 		model.addAttribute("fotografi", this.fotografoService.tutti());
 		return "fotografi.html";
