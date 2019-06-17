@@ -28,9 +28,9 @@ public class AlbumController {
 		return "aggiungiAlbum.html";
 	}
 	
-	@RequestMapping(value = "/showAlbum")
+	@RequestMapping(value = "/allAlbum")
 	public String showAlbum(Model model) {
-		model.addAttribute("album", this.albumService.tutti());
+		model.addAttribute("albums", this.albumService.tutti());
 		return "album.html";
 	}
 	
