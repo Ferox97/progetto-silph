@@ -42,7 +42,8 @@ h2 {
 	<div class="container-fluid">
 		<div class="container">
 			<div class="formBox">
-				<form th:action="@{/addFotografo}" th:method="post" th:object="${fotografo}">
+				<form th:action="@{/addFotografo}" th:method="post"
+					th:object="${fotografo}">
 					<div class="row">
 						<div class="col-sm-12">
 							<h1>Nuovo Fotografo</h1>
@@ -54,8 +55,10 @@ h2 {
 							<div class="inputBox ">
 								<div class="inputText"></div>
 								<input type="text" name="" class="input" placeholder="Nome"
-									th:field="*{nome}"> <span
-									th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+									th:field="*{nome}">
+								<div class="warning">
+									<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+								</div>
 							</div>
 						</div>
 
@@ -63,8 +66,11 @@ h2 {
 							<div class="inputBox">
 								<div class="inputText"></div>
 								<input type="text" name="" class="input" placeholder="Cognome"
-									th:field="*{cognome}"> <span
-									th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+									th:field="*{cognome}">
+								<div class="warning">
+									<span th:if="${#fields.hasErrors('cognome')}"
+										th:errors="*{cognome}"></span>
+								</div>
 							</div>
 						</div>
 					</div>

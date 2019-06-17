@@ -54,17 +54,22 @@ h2 {
 							<div class="inputBox ">
 								<div class="inputText"></div>
 								<input type="text" name="" class="input" placeholder="Titolo"
-									th:field="*{nome}"> <span
-									th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+									th:field="*{nome}">
+								<div class="warning">
+									<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+								</div>
 							</div>
 						</div>
 
 						<div class="col-sm-6">
 							<div class="inputBox">
 								<div class="inputText"></div>
-								<input type="text" name="" class="input" placeholder="Descrizione"
-									th:field="*{descrizione}"> <span
-									th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+								<input type="text" name="" class="input"
+									placeholder="Descrizione" th:field="*{descrizione}">
+								<div class="warning">
+									<span th:if="${#fields.hasErrors('descrizione')}"
+										th:errors="*{descrizione}"></span>
+								</div>
 							</div>
 						</div>
 					</div>

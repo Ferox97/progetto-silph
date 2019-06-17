@@ -48,6 +48,9 @@ body{
 	font-size: 18px;
 	opacity: 1;
 }
+.warning {
+	color: white;
+}
 textarea{
 	height: 100px !important;
 }
