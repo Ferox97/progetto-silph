@@ -7,7 +7,7 @@ public class FotografiaForm {
 	private String nome;
 	private String descrizione;
 	private Long album_id;
-	private String fotografo_id;
+	private Long fotografo_id;
 	private MultipartFile file;
 	
 	public String getNome() {
@@ -34,10 +34,10 @@ public class FotografiaForm {
 	public void setAlbum_id(Long album_id) {
 		this.album_id = album_id;
 	}
-	public String getFotografo_id() {
+	public Long getFotografo_id() {
 		return fotografo_id;
 	}
-	public void setFotografo_id(String fotografo_id) {
+	public void setFotografo_id(Long fotografo_id) {
 		this.fotografo_id = fotografo_id;
 	}
 	

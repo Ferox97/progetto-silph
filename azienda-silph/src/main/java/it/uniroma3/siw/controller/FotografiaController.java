@@ -10,6 +10,7 @@ import it.uniroma3.siw.payload.UploadFileResponse;
 import it.uniroma3.siw.service.AlbumService;
 import it.uniroma3.siw.service.FileStorageService;
 import it.uniroma3.siw.service.FotografiaService;
+import it.uniroma3.siw.service.FotografoService;
 import it.uniroma3.siw.service.FotografiaFormValidator;
 
 import org.slf4j.Logger;
@@ -62,6 +63,9 @@ public class FotografiaController {
     @Autowired
     private AlbumService albumService;
     
+    @Autowired
+    private FotografoService fotografoService;
+    
     @RequestMapping(value="/uploadFoto", method = RequestMethod.POST)
     public String newFoto(@Valid @ModelAttribute("fotografiaForm") FotografiaForm fotografiaForm, Model model, BindingResult bindingResult)  {
     	
@@ -75,7 +79,8 @@ public class FotografiaController {
     	
     	String fileName = fileStorageService.storeFile(fotografiaForm.getFile());
     	
-    	Fotografia fotografia = new Fotografia(fileName , fotografiaForm.getNome() , fotografiaForm.getDescrizione() , albumService.findById(fotografiaForm.getAlbum_id()));
+    	Fotografia fotografia = new Fotografia(fileName , fotografiaForm.getNome() , fotografiaForm.getDescrizione() , 
+    			albumService.findById(fotografiaForm.getAlbum_id()) , fotografoService.findById(fotografiaForm.getFotografo_id()));
 
         this.fotografiaService.inserisci(fotografia); //esegui il persistence
  

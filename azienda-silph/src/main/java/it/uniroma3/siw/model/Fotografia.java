@@ -26,12 +26,13 @@ public class Fotografia {
 	}
 
 
-	public Fotografia(String id, String nome, String descrizione , Album album) {
+	public Fotografia(String id, String nome, String descrizione , Album album , Fotografo fotografo) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.album=album;
+		this.fotografo=fotografo;
 	}
 
 

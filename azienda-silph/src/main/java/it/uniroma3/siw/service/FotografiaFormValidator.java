@@ -14,6 +14,9 @@ public class FotografiaFormValidator implements Validator {
 	@Autowired
 	private AlbumService albumService;
 	
+	@Autowired
+	private FotografoService fotografoService;
+	
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return FotografiaForm.class.equals(clazz);
@@ -37,6 +40,12 @@ public class FotografiaFormValidator implements Validator {
 		if(!this.albumService.alreadyExistsById(fotografiaForm.getAlbum_id()))
             errors.rejectValue("album_id", "non_esiste_album");
 		}
+		
+		if(fotografiaForm.getFotografo_id()!=null) {
+			
+			if(!this.fotografoService.alreadyExistsById(fotografiaForm.getFotografo_id()))
+	            errors.rejectValue("fotografo_id", "non_esiste_fotografo");
+			}
 		
 		
 	        
