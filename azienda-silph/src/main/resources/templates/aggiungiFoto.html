@@ -97,8 +97,8 @@ h2 {
 					</div>
 					
 					<div class="file btn btn-lg btn-primary">
-							<input type="file" th:field=*{file}> <span
-								th:if="${#fields.hasErrors('file')}" th:errors="{file}"></span>
+							<input type="file" th:field="*{file}"> <span
+								th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></span>
 						</div>
 					
 					<p></p>
