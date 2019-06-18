@@ -48,12 +48,19 @@ body{
 	font-size: 18px;
 	opacity: 1;
 }
-.warning {
+
+.warning{
 	color: white;
 }
+
+.centro{
+	align-content: center;
+}
+
 textarea{
 	height: 100px !important;
 }
+
 .button{
 	width: 100%;
     height: 50px;
