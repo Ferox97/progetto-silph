@@ -14,7 +14,6 @@ public class Richiesta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String richiedente;
 	private String mail;
 	private String dettaglioRichiesta;
 	
@@ -27,14 +26,6 @@ public class Richiesta {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getRichiedente() {
-		return richiedente;
-	}
-
-	public void setRichiedente(String richiedente) {
-		this.richiedente = richiedente;
 	}
 
 	public String getMail() {

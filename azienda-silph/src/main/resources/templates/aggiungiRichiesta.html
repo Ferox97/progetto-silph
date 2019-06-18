@@ -3,7 +3,7 @@
 	xmlns="http://www.w3.org/1999/html">
 
 <head>
-<title>Inserimento richiesta</title>
+<title>Inserimento album</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link
@@ -75,6 +75,7 @@
 <script src="../static/js/animate.js" th:src="@{/js/animate.js}"></script>
 <script src="../static/js/custom.js" th:src="@{/js/custom.js}"></script>
 
+
 <style>
 body {
 	background-color: #152836
@@ -136,8 +137,7 @@ h2 {
 	<div class="container-fluid">
 										<div class="container">
 			<div class="formBox">
-				<form th:action="@{/addRichiesta}" th:method="post"
-													th:object="${richiesta}">
+				<form th:action="@{/addRichiesta}" th:method="post" th:object="${richiesta}">
 					<div class="row">
 						<div class="col-sm-12">
 							<h1>Nuova Richiesta</h1>
@@ -148,11 +148,10 @@ h2 {
 						<div class="col-sm-6">
 							<div class="inputBox ">
 								<div class="inputText"></div>
-								<input type="text" name="" class="input"
-																	placeholder="Richiedente" th:field="*{richiedente}">
+								<input type="text" name="" class="input" placeholder="Email"
+																	th:field="*{mail}">
 								<div class="warning">
-									<span th:if="${#fields.hasErrors('richiedente')}"
-																		th:errors="*{richiedente}"></span>
+									<span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></span>
 								</div>
 							</div>
 						</div>
@@ -160,21 +159,8 @@ h2 {
 						<div class="col-sm-6">
 							<div class="inputBox">
 								<div class="inputText"></div>
-								<input type="text" name="" class="input" placeholder="Mail"
-																	th:field="*{mail}">
-								<div class="warning">
-									<span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="inputBox ">
-								<div class="inputText"></div>
-								<input type="text" name="" class="input" placeholder="Foto_id"
-																	th:field="*{dettaglioRichiesta}">
+								<input type="text" name="" class="input"
+																	placeholder="Scrivi qui i Dettagli" th:field="*{dettaglioRichiesta}">
 								<div class="warning">
 									<span th:if="${#fields.hasErrors('dettaglioRichiesta')}"
 																		th:errors="*{dettaglioRichiesta}"></span>
@@ -183,12 +169,10 @@ h2 {
 						</div>
 					</div>
 
-					<br> <br> <br>
-
 					<div class="row">
 						<div class="col-sm-12">
 							<input type="submit" name="" class="button btn btn-primary"
-																value="Conferma richiesta">
+																value="Conferma inserimento">
 						</div>
 					</div>
 				</form>
