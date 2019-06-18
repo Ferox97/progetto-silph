@@ -97,9 +97,62 @@ h2 {
 
 </head>
 <body>
+	<header>
+		<!-- start top -->
+		<div id="topnav" class="navbar navbar-fixed-top default">
+			<div class="navbar-inner">
+				<div class="container">
+					<div class="logo">
+						<a href="index.html"><img src="assets/img/logo.png" alt="" /></a>
+					</div>
+					<div class="navigation">
+						<nav>
+							<ul class="nav pull-left">
+								<li class="current"><a href="/" class="external">Home</a></li>
+							</ul>
+							<ul class="nav pull-right">
+
+								<li><a sec:authorize="isAnonymous()" href="/"
+									class="text-white external">Effettua il Login</a></li>
+
+								<li><a sec:authorize="isAuthenticated()" href="/logout"
+									class="text-white external">Effettua il logout</a></li>
+
+								<li class="dropdown"><a href="#">Richieste</a>
+									<ul class="dropdown-menu">
+										<li><a href="/aggiungiRichiesta" class="external">Aggiungi
+												Richiesta</a></li>
+										<li><a sec:authorize="isAuthenticated()"
+											href="/allRichieste" class="external">Visualizza
+												Richieste</a></li>
+									</ul>
+
+									<li class="dropdown"><a href="#">Visualizza</a>
+									<ul class="dropdown-menu">
+										<li><a href="/allFotografie" class="external">Fotografie</a></li>
+										<li><a href="/allAlbum" class="external">Album</a></li>
+										<li><a href="/allFotografi" class="external">Fotografi</a></li>
+									</ul>
+								
+								<li class="dropdown"><a sec:authorize="isAuthenticated()"
+									href="#">Aggiungi</a>
+									<ul class="dropdown-menu">
+										<li><a href="/aggiungiFotografia" class="external">Fotografie</a></li>
+										<li><a href="/aggiungiAlbum" class="external">Album</a></li>
+										<li><a href="/aggiungiFotografo" class="external">Fotografi</a></li>
+									</ul></li>
+							</ul>
+						</nav>
+					</div>
+					<!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>
+		<!-- end top -->
+	</header>
 	<div class="container-fluid">
 										<div class="container">
-			<div class="formBox">
+											<div class="formBox">
 				<form th:action="@{/addAlbum}" th:method="post" th:object="${album}">
 					<div class="row">
 						<div class="col-sm-12">
@@ -134,7 +187,8 @@ h2 {
 
 					<div class="row">
 						<div class="col-sm-12">
-							<input type="submit" name="" class="btn btn-primary btn-lg btn-block"
+							<input type="submit" name=""
+																class="btn btn-primary btn-lg btn-block"
 																value="Conferma inserimento">
 						</div>
 					</div>
@@ -143,5 +197,6 @@ h2 {
 		</div>
 	</div>
 
+								
 								</body>
 </html>
