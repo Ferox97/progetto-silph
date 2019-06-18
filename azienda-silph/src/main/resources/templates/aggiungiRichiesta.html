@@ -3,37 +3,103 @@
 	xmlns="http://www.w3.org/1999/html">
 
 <head>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Inserimento richiesta</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link
+	href="https://cdn.jsdelivr.net/lightgallery/1.3.9/css/lightgallery.min.css"
+	rel="stylesheet">
+<style>
+body {
+	background-color: #152836
+}
 
-<title>Inserimento Richiesta</title>
+h2 {
+	color: #fff;
+	margin-bottom: 40px;
+	text-align: center;
+	font-weight: 100;
+}
+</style>
+
+<link rel="stylesheet" type="text/css"
+	href="../static/css/aggiungiAlbum.css"
+	th:href="@{/css/aggiungiAlbum.css}">
+<script src="../static/js/aggiungiAlbum.js"
+	th:src="@{/js/aggiungiAlbum.js}"></script>
+
 </head>
 <body>
-	<div>
-		<h1>Inserisci i dati di una Richiesta</h1>
+	<div class="container-fluid">
+		<div class="container">
+			<div class="formBox">
+				<form th:action="@{/addRichiesta}" th:method="post"
+					th:object="${richiesta}">
+					<div class="row">
+						<div class="col-sm-12">
+							<h1>Nuova Richiesta</h1>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="inputBox ">
+								<div class="inputText"></div>
+								<input type="text" name="" class="input"
+									placeholder="Richiedente" th:field="*{richiedente}">
+								<div class="warning">
+									<span th:if="${#fields.hasErrors('richiedente')}"
+										th:errors="*{richiedente}"></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="inputBox">
+								<div class="inputText"></div>
+								<input type="text" name="" class="input" placeholder="Mail"
+									th:field="*{mail}">
+								<div class="warning">
+									<span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="inputBox ">
+								<div class="inputText"></div>
+								<input type="text" name="" class="input" placeholder="Foto_id"
+									th:field="*{dettaglioRichiesta}">
+								<div class="warning">
+									<span th:if="${#fields.hasErrors('dettaglioRichiesta')}"
+										th:errors="*{dettaglioRichiesta}"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<br> <br> <br>
+
+					<div class="row">
+						<div class="col-sm-12">
+							<input type="submit" name="" class="button btn btn-primary"
+								value="Conferma richiesta">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
-	<form th:action="@{/addRichiesta}" th:method="post" th:object="${richiesta}">
-		<table>
-			<tr>
-				<td>Richiedente:</td>
-				<td><input type="text" th:field="*{richiedente}" />
-				<td th:if="${#fields.hasErrors('richiedente')}" th:errors="*{richiedente}"></td>
-			</tr>
-			<tr>
-				<td>Mail:</td>
-				<td><input type="text" th:field="*{mail}" /></td>
-				<td th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></td>
-			</tr>
-			<tr>
-			<td>Dettagli:</td>
-			<td><input type="text" th:field="*{dettaglioRichiesta}" /></td>
-			<td th:if="${#fields.hasErrors('dettaglioRichiesta')}" th:errors="*{dettaglioRichiesta}"></td>
-			<tr>
-				<td>
-					<button type="submit">Invio</button>
-				</td>
-			</tr>
-		</table>
-	</form>
 </body>
 </html>
