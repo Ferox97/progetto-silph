@@ -1,37 +1,152 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-	
-	<head>
-	
-	<head>
-        <title>LightGallery</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://cdn.jsdelivr.net/lightgallery/1.3.9/css/lightgallery.min.css" rel="stylesheet">
-        <style>body{background-color:#152836}h2{color:#fff;margin-bottom:40px;text-align:center;font-weight:100;}</style>
-	
-	<link rel="stylesheet" type="text/css" href="../static/css/fotografie.css" th:href="@{/css/fotografie.css}">
-	<script src="../static/js/fotografie.js"  th:src="@{/js/fotografie.js}"></script>
-        
-        
-    </head>
-	
+
+<head>
+<head>
+<title>LightGallery</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link
+	href="https://cdn.jsdelivr.net/lightgallery/1.3.9/css/lightgallery.min.css"
+	rel="stylesheet">
+
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrapVesperr.css"
+	th:href="@{/css/bootstrapVesperr.css}">
+
+<link rel="stylesheet" type="text/css"
+	href="../static/css/overwrite.css" th:href="@{/css/overwrite.css}">
+
+<link rel="stylesheet" type="text/css"
+	href="../static/css/font-awesome.css"
+	th:href="@{/css/font-awesome.css}">
+
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap-responsive.css"
+	th:href="@{/css/bootstrap-responsive.css}">
+
+<link rel="stylesheet" type="text/css"
+	href="../static/css/prettyPhoto.css" th:href="@{/css/prettyPhoto.css}">
+
+<link rel="stylesheet" type="text/css" href="../static/css/animate.css"
+	th:href="@{/css/animate.css}">
+
+<link
+	href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Roboto+Condensed:400,300,700"
+	rel="stylesheet" />
+
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+	th:href="@{/css/style.css}">
+
+<link rel="stylesheet" type="text/css" href="../static/css/default.css"
+	th:href="@{/css/default.css}">
+
+
+
+<!-- Javascript Library Files -->
+<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="../static/js/jquery.easing.js"
+	th:src="@{/js/jquery.easing.js}"></script>
+<script src="../static/js/bootstrapVesperr.js"
+	th:src="@{/js/bootstrapVesperr.js}"></script>
+<script src="../static/js/jquery.parallax-1.1.3.js"
+	th:src="@{/js/jquery.parallax-1.1.3.js}"></script>
+<script src="../static/js/nagging-menu.js"
+	th:src="@{/js/nagging-menu.js}"></script>
+<script src="../static/js/jquery.nav.js" th:src="@{/js/jquery.nav.js}"></script>
+<script src="../static/js/jquery.prettyPhoto.js"
+	th:src="@{/js/jquery.prettyPhoto.js}"></script>
+<script src="../static/js/jquery.quicksand.js"
+	th:src="@{/js/quicksand.js}"></script>
+<script src="../static/js/setting.js" th:src="@{/js/setting.js}"></script>
+<script src="../static/js/jquery-hover-effect.js"
+	th:src="@{/js/jquery-hover-effect.js}"></script>
+<script src="../static/js/jquery.scrollTo.min.js"
+	th:src="@{/js/jquery.scrollTo.min.js}"></script>
+<script src="../static/js/animate.js" th:src="@{/js/animate.js}"></script>
+<script src="../static/js/custom.js" th:src="@{/js/custom.js}"></script>
+
+<style>
+body {
+	background-color: #152836
+}
+
+h2 {
+	color: #fff;
+	margin-bottom: 40px;
+	text-align: center;
+	font-weight: 100;
+}
+</style>
+
+<link rel="stylesheet" type="text/css"
+	href="../static/css/fotografie.css" th:href="@{/css/fotografie.css}">
+<script src="../static/js/fotografie.js" th:src="@{/js/fotografie.js}"></script>
+
+
+</head>
+
 <body class="home">
-        <div class="container" style="margin-top:40px;">
-            <h2 th:text="@{${nome} + ' : ' + ${descrizione}}"></h2> 
+	<header>
+		<!-- start top -->
+		<div id="topnav" class="navbar navbar-fixed-top default">
+			<div class="navbar-inner">
+				<div class="container">
+					<div class="logo">
+						<a href="index.html"><img src="assets/img/logo.png" alt="" /></a>
+					</div>
+					<div class="navigation">
+						<nav>
+							<ul class="nav pull-left">
+								<li class="current"><a href="/" class="external">Home</a></li>
+							</ul>
+							<ul class="nav pull-right">
+								<li><a href="/" class="external">Login</a></li>
+								<li><a href="/" class="external">Richieste</a></li>
+								<li class="dropdown"><a href="#">Visualizza</a>
+									<ul class="dropdown-menu">
+										<li><a href="allFotografie" class="external">Fotografie</a></li>
+										<li><a href="allAlbum" class="external">Album</a></li>
+										<li><a href="allFotografi" class="external">Fotografi</a></li>
+									</ul>
+									<li class="dropdown"><a href="#">Aggiungi</a>
+									<ul class="dropdown-menu">
+										<li><a href="aggiungiFotografia" class="external">Fotografie</a></li>
+										<li><a href="aggiungiAlbum" class="external">Album</a></li>
+										<li><a href="aggiungiFotografo" class="external">Fotografi</a></li>
+									</ul></li>
+							</ul>
+						</nav>
+					</div>
+					<!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>
+		<!-- end top -->
+	</header>
+        <div class="container" style="margin-top: 100px;">
+										<h2 th:text="@{${nome} + ' : ' + ${descrizione}}"></h2> 
             <div class="demo-gallery">
             
             
                 <ul id="lightgallery" class="list-unstyled row">
-                   <li th:each="fotografia : ${fotografie}" class="col-xs-6 col-sm-4 col-md-2 col-lg-2" data-responsive="" data-src="" data-sub-html="" 
-                   th:attr="data-responsive= @{'../upload' + '/' + ${fotografia.id}} , data-src= @{'../upload' + '/' + ${fotografia.id}} , data-sub-html= @{'<h4>' + ${fotografia.nome} + '</h4><p>' + ${fotografia.descrizione} + '</p>'} " >
+                   <li th:each="fotografia : ${fotografie}"
+													class="col-xs-6 col-sm-4 col-md-2 col-lg-2"
+													data-responsive="" data-src="" data-sub-html=""
+													th:attr="data-responsive= @{'../upload' + '/' + ${fotografia.id}} , data-src= @{'../upload' + '/' + ${fotografia.id}} , data-sub-html= @{'<h4>' + ${fotografia.nome} + '</h4><p>' + ${fotografia.descrizione} + '</p>'} ">
                         <a href="">
-                            <img class="img-responsive" th:src="@{'../upload' + '/' + ${fotografia.id}}">
+                            <img class="img-responsive"
+														th:src="@{'../upload' + '/' + ${fotografia.id}}">
                         </a>
                     </li>
                   
@@ -46,5 +161,6 @@
                 $('#lightgallery').lightGallery(); 
             });
         </script>
-    </body>
+    
+								</body>
 </html>
