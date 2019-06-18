@@ -83,7 +83,8 @@ public class FotografiaController {
     			albumService.findById(fotografiaForm.getAlbum_id()) , fotografoService.findById(fotografiaForm.getFotografo_id()));
 
         this.fotografiaService.inserisci(fotografia); //esegui il persistence
- 
+        
+        model.addAttribute("fotografie", this.fotografiaService.tutti());
       return "fotografie.html";
       
     	}	

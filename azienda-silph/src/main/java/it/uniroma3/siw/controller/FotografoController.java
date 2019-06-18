@@ -39,7 +39,8 @@ public class FotografoController {
     	
         this.fotografoService.inserisci(fotografo); //esegui il persistence
  
-      return "aggiungiFotografo.html";
+        model.addAttribute("fotografi", this.fotografoService.tutti());
+		return "fotografi.html";
       
     }
 	

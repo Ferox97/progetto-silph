@@ -115,26 +115,26 @@ h2 {
 								<li><a sec:authorize="isAnonymous()" href="/"
 									class="text-white external">Effettua il Login</a></li>
 								
-								<li><a sec:authorize="isAuthenticated()" href="logout"
+								<li><a sec:authorize="isAuthenticated()" href="/logout"
 									class="text-white external">Effettua il logout</a></li>
 									
 								<li class="dropdown"><a href="#">Richieste</a>
 									<ul class="dropdown-menu">
-										<li><a href="aggiungiRichiesta" class="external">Aggiungi Richiesta</a></li>
-										<li><a sec:authorize="isAuthenticated()" href="allRichieste" class="external">Visualizza Richieste</a></li>
+										<li><a href="/aggiungiRichiesta" class="external">Aggiungi Richiesta</a></li>
+										<li><a sec:authorize="isAuthenticated()" href="/allRichieste" class="external">Visualizza Richieste</a></li>
 									</ul>								
 								
 								<li class="dropdown"><a href="#">Visualizza</a>
 									<ul class="dropdown-menu">
-										<li><a href="allFotografie" class="external">Fotografie</a></li>
-										<li><a href="allAlbum" class="external">Album</a></li>
-										<li><a href="allFotografi" class="external">Fotografi</a></li>
+										<li><a href="/allFotografie" class="external">Fotografie</a></li>
+										<li><a href="/allAlbum" class="external">Album</a></li>
+										<li><a href="/allFotografi" class="external">Fotografi</a></li>
 									</ul>
 								<li class="dropdown"><a sec:authorize="isAuthenticated()" href="#">Aggiungi</a>
 									<ul class="dropdown-menu">
-										<li><a href="aggiungiFotografia" class="external">Fotografie</a></li>
-										<li><a href="aggiungiAlbum" class="external">Album</a></li>
-										<li><a href="aggiungiFotografo" class="external">Fotografi</a></li>
+										<li><a href="/aggiungiFotografia" class="external">Fotografie</a></li>
+										<li><a href="/aggiungiAlbum" class="external">Album</a></li>
+										<li><a href="/aggiungiFotografo" class="external">Fotografi</a></li>
 									</ul></li>
 							</ul>
 						</nav>

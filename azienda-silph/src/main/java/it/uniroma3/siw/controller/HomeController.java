@@ -11,11 +11,9 @@ public class HomeController {
 	
 	
 	@RequestMapping("/")
-	public String addFotografo(Model model) {
+	public String addFunzionario(Model model) {
 		model.addAttribute("funzionario" , new Funzionario());
 		return "index.html";
 	}
-	
-	
 
 }

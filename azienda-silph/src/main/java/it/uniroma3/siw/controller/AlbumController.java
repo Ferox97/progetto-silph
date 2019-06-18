@@ -50,7 +50,8 @@ public class AlbumController {
     	
         this.albumService.inserisci(album); //esegui il persistence
  
-      return "aggiungiAlbum.html";
+        model.addAttribute("albums", this.albumService.tutti());
+		return "album.html";
       
     }
 
