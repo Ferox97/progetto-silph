@@ -16,9 +16,6 @@ public class Richiesta {
 	private Long id;
 	private String mail;
 	private String dettaglioRichiesta;
-	
-	@ManyToMany
-	private List<Fotografia> fotografie;
 
 	public Long getId() {
 		return id;
@@ -36,13 +33,6 @@ public class Richiesta {
 		this.mail = mail;
 	}
 
-	public List<Fotografia> getFotografie() {
-		return fotografie;
-	}
-
-	public void setFotografie(List<Fotografia> fotografie) {
-		this.fotografie = fotografie;
-	}
 
 	public String getDettaglioRichiesta() {
 		return dettaglioRichiesta;
