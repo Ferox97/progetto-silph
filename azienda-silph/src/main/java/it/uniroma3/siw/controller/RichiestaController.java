@@ -40,7 +40,7 @@ public class RichiestaController {
     	
         this.richiestaService.inserisci(richiesta); //esegui il persistence
  
-      return "aggiungiRichiesta.html";
+      return "index.html";
       
     }
 	
