@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+import it.uniroma3.siw.model.Funzionario;
 import it.uniroma3.siw.model.Richiesta;
 
 import it.uniroma3.siw.service.RichiestaService;
@@ -39,6 +39,7 @@ public class RichiestaController {
     public String newRichiesta(@Valid @ModelAttribute("richiesta") Richiesta richiesta, Model model, BindingResult bindingResult) {
     	
         this.richiestaService.inserisci(richiesta); //esegui il persistence
+        model.addAttribute("funzionario" , new Funzionario());
  
       return "index.html";
       

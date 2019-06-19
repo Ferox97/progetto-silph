@@ -1,5 +1,6 @@
 package it.uniroma3.siw.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -9,10 +10,13 @@ import javax.persistence.ManyToOne;
 public class Fotografia {
 
     @Id
+    @Column(length=1000)
     private String id;
     
+    @Column(length=1000)
     private String nome;
     
+    @Column(length=1000)
     private String descrizione;
 
     @ManyToOne
