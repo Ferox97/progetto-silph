@@ -28,4 +28,10 @@ public class RichiestaService {
 		return (List<Richiesta>) richiestaRepository.findAll();
 	}
 
+	public Richiesta findById(Long id) {
+		
+		return richiestaRepository.findById(id).get();
+		
+	}
+
 }
