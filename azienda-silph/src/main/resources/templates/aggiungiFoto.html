@@ -110,26 +110,29 @@ h2 {
 								<li class="current"><a href="/" class="external">Home</a></li>
 							</ul>
 							<ul class="nav pull-right">
-								
+
 								<li><a sec:authorize="isAnonymous()" href="/"
 									class="text-white external">Effettua il Login</a></li>
-								
+
 								<li><a sec:authorize="isAuthenticated()" href="/logout"
 									class="text-white external">Effettua il logout</a></li>
-									
+
 								<li class="dropdown"><a href="#">Richieste</a>
 									<ul class="dropdown-menu">
-										<li><a href="/aggiungiRichiesta" class="external">Aggiungi Richiesta</a></li>
-										<li><a sec:authorize="isAuthenticated()" href="/allRichieste" class="external">Visualizza Richieste</a></li>
-									</ul>								
-								
+										<li><a href="/aggiungiRichiesta" class="external">Aggiungi
+												Richiesta</a></li>
+										<li><a sec:authorize="isAuthenticated()"
+											href="/allRichieste" class="external">Visualizza
+												Richieste</a></li>
+									</ul>
 								<li class="dropdown"><a href="#">Visualizza</a>
 									<ul class="dropdown-menu">
 										<li><a href="/allFotografie" class="external">Fotografie</a></li>
 										<li><a href="/allAlbum" class="external">Album</a></li>
 										<li><a href="/allFotografi" class="external">Fotografi</a></li>
 									</ul>
-								<li class="dropdown"><a sec:authorize="isAuthenticated()" href="#">Aggiungi</a>
+								<li class="dropdown"><a sec:authorize="isAuthenticated()"
+									href="#">Aggiungi</a>
 									<ul class="dropdown-menu">
 										<li><a href="/aggiungiFotografia" class="external">Fotografie</a></li>
 										<li><a href="/aggiungiAlbum" class="external">Album</a></li>
@@ -144,92 +147,95 @@ h2 {
 		</div>
 		<!-- end top -->
 	</header>
- <div class="container-fluid">
-										<div class="container">
-   <div class="formBox">
+	<div class="container-fluid">
+		<div class="container">
+			<div class="formBox">
 
 
-    <form th:action="@{/uploadFoto}" th:method="post"
-													th:object="${fotografiaForm}" enctype="multipart/form-data">
+				<form th:action="@{/uploadFoto}" th:method="post"
+					th:object="${fotografiaForm}" enctype="multipart/form-data">
 
-     <div class="row">
-      <div class="col-sm-12">
-       <h1>Nuova Fotografia</h1>
-      </div>
-     </div>
+					<div class="row">
+						<div class="col-sm-12">
+							<h1>Nuova Fotografia</h1>
+						</div>
+					</div>
 
-     <div class="row">
-      <div class="col-sm-6">
-       <div class="inputBox ">
-        <div class="inputText"></div>
-        <input type="text" name="" class="input" placeholder="Titolo"
-																	th:field="*{nome}">
-        <div class="warning">
-         <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-        </div>
-       </div>
-      </div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="inputBox ">
+								<div class="inputText"></div>
+								<input type="text" name="" class="input" placeholder="Titolo"
+									th:field="*{nome}">
+								<div class="warning">
+									<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+								</div>
+							</div>
+						</div>
 
-      <div class="col-sm-6">
-       <div class="inputBox">
-        <div class="inputText"></div>
-        <input type="text" name="" class="input"
-																	placeholder="Descrizione" th:field="*{descrizione}">
-        <div class="warning">
-         <span th:if="${#fields.hasErrors('descrizione')}"
-																		th:errors="*{descrizione}"></span>
-        </div>
-       </div>
-      </div>
-     </div>
+						<div class="col-sm-6">
+							<div class="inputBox">
+								<div class="inputText"></div>
+								<input type="text" name="" class="input"
+									placeholder="Descrizione" th:field="*{descrizione}">
+								<div class="warning">
+									<span th:if="${#fields.hasErrors('descrizione')}"
+										th:errors="*{descrizione}"></span>
+								</div>
+							</div>
+						</div>
+					</div>
 
-     <div class="row">
-      <div class="col-sm-6">
-       <div class="inputBox ">
-        <div class="inputText"></div>
-        <input type="text" name="" class="input" placeholder="Album_id"
-																	th:field="*{album_id}">
-        <div class="warning">
-         <span th:if="${#fields.hasErrors('album_id')}"
-																		th:errors="*{album_id}"></span>
-        </div>
-       </div>
-      </div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="inputBox ">
+								<div class="inputText"></div>
+								<input type="text" name="" class="input" placeholder="Album_id"
+									th:field="*{album_id}">
+								<div class="warning">
+									<span th:if="${#fields.hasErrors('album_id')}"
+										th:errors="*{album_id}"></span>
+								</div>
+							</div>
+						</div>
 
-      <div class="col-sm-6">
-       <div class="inputBox">
-        <div class="inputText"></div>
-        <input type="text" name="" class="input"
-																	placeholder="Fotografo_id" th:field="*{fotografo_id}">
-        <div class="warning">
-         <span th:if="${#fields.hasErrors('fotografo_id')}"
-																		th:errors="*{fotografo_id}"></span>
-        </div>
-       </div>
-      </div>
-     </div>
+						<div class="col-sm-6">
+							<div class="inputBox">
+								<div class="inputText"></div>
+								<input type="text" name="" class="input"
+									placeholder="Fotografo_id" th:field="*{fotografo_id}">
+								<div class="warning">
+									<span th:if="${#fields.hasErrors('fotografo_id')}"
+										th:errors="*{fotografo_id}"></span>
+								</div>
+							</div>
+						</div>
+					</div>
 
 
 
-     <div class="file btn btn-lg btn-primary">
-      <input type="file" th:field="*{file}"> <span
-															th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></span>
-     </div>
+					<div class="file btn btn-lg btn-primary">
+						<input type="file" th:field="*{file}"> <span
+							th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></span>
+					</div>
 
-	
-     <br><br><br>
 
-     <div class="row">
-      <div class="col-sm-12">
-       <input type="submit" name="" class="button btn btn-primary"
-																value="Conferma inserimento">
-      </div>
-     </div>
+					<br>
+					<br>
+					<br>
 
-    </form>
-   </div>
-  </div>
- </div>
+					<div class="row">
+						<div class="col-sm-12">
+							<input type="submit" name=""
+								class="btn btn-primary btn-lg btn-block"
+								value="Conferma inserimento">
+						</div>
+					</div>
 
-								</body>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
 </html>
