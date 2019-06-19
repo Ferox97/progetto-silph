@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.model.Fotografo;
 import it.uniroma3.siw.service.FotografoService;
+import it.uniroma3.siw.service.FotografoValidator;
 
 @Controller
 public class FotografoController {
@@ -34,14 +35,25 @@ public class FotografoController {
 		return "fotografi.html";
 	}
 	
+	@Autowired
+	FotografoValidator fotografoValidator;
+	
 	@RequestMapping(value="/addFotografo", method = RequestMethod.POST)
     public String newFotografo(@Valid @ModelAttribute("fotografo") Fotografo fotografo, Model model, BindingResult bindingResult) {
     	
+		fotografoValidator.validate(fotografo , bindingResult);
+		
+		if(bindingResult.hasErrors()) {
+			
+			return "aggiungiFotografo";
+			
+		} else {
+								
         this.fotografoService.inserisci(fotografo); //esegui il persistence
  
         model.addAttribute("fotografi", this.fotografoService.tutti());
 		return "fotografi.html";
-      
+		}
     }
 	
 	@GetMapping(value="/fotografo/{id}")

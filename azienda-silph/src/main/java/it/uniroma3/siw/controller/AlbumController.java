@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.model.Album;
 import it.uniroma3.siw.service.AlbumService;
+import it.uniroma3.siw.service.AlbumValidator;
 
 @Controller
 public class AlbumController {
@@ -45,13 +46,26 @@ public class AlbumController {
 		
 	}
 	
+	@Autowired
+	AlbumValidator albumValidator;
+	
 	@RequestMapping(value="/addAlbum", method = RequestMethod.POST)
     public String newAlbum(@Valid @ModelAttribute("album") Album album, Model model, BindingResult bindingResult) {
     	
+		albumValidator.validate(album , bindingResult);
+		
+		if(bindingResult.hasErrors()) {
+			
+			return "aggiungiAlbum";
+			
+		} else {
+		
         this.albumService.inserisci(album); //esegui il persistence
  
         model.addAttribute("albums", this.albumService.tutti());
 		return "album.html";
+		
+		}
       
     }
 

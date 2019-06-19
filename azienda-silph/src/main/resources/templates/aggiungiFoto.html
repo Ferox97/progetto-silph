@@ -157,7 +157,7 @@ h2 {
 
 					<div class="row">
 						<div class="col-sm-12">
-							<h1>Nuova Fotografia</h1>
+							<h1>Aggiungi una nuova Fotografia</h1>
 						</div>
 					</div>
 
@@ -167,6 +167,7 @@ h2 {
 								<div class="inputText"></div>
 								<input type="text" name="" class="input" placeholder="Titolo"
 									th:field="*{nome}">
+									Titolo della Fotografia
 								<div class="warning">
 									<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 								</div>
@@ -178,6 +179,7 @@ h2 {
 								<div class="inputText"></div>
 								<input type="text" name="" class="input"
 									placeholder="Descrizione" th:field="*{descrizione}">
+									Descrizione della Fotografia
 								<div class="warning">
 									<span th:if="${#fields.hasErrors('descrizione')}"
 										th:errors="*{descrizione}"></span>
@@ -192,6 +194,7 @@ h2 {
 								<div class="inputText"></div>
 								<input type="text" name="" class="input" placeholder="Album_id"
 									th:field="*{album_id}">
+									Se non conosci l'ID > Visualizza > Album
 								<div class="warning">
 									<span th:if="${#fields.hasErrors('album_id')}"
 										th:errors="*{album_id}"></span>
@@ -204,6 +207,7 @@ h2 {
 								<div class="inputText"></div>
 								<input type="text" name="" class="input"
 									placeholder="Fotografo_id" th:field="*{fotografo_id}">
+									Se non conosci l'ID > Visualizza > Fotografi
 								<div class="warning">
 									<span th:if="${#fields.hasErrors('fotografo_id')}"
 										th:errors="*{fotografo_id}"></span>
@@ -214,18 +218,20 @@ h2 {
 
 
 
-					<div class="file btn btn-lg btn-primary">
+					<div class="file btn btn-lg btn-primary row">
+					<br>
 						<input type="file" th:field="*{file}"> <span
 							th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></span>
+							<br>
+							<br>
 					</div>
-
 
 					<br>
 					<br>
 					<br>
 
 					<div class="row">
-						<div class="col-sm-12">
+						<div class="col-sm-12 btn btn-lg btn-primary">
 							<input type="submit" name=""
 								class="btn btn-primary btn-lg btn-block"
 								value="Conferma inserimento">

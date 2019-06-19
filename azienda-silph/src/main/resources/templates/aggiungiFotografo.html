@@ -154,7 +154,7 @@ h2 {
 					th:object="${fotografo}">
 					<div class="row">
 						<div class="col-sm-12">
-							<h1>Nuovo Fotografo</h1>
+							<h1>Aggiungi un Nuovo Fotografo</h1>
 						</div>
 					</div>
 
@@ -164,6 +164,7 @@ h2 {
 								<div class="inputText"></div>
 								<input type="text" name="" class="input" placeholder="Nome"
 									th:field="*{nome}">
+									Nome del Fotografo
 								<div class="warning">
 									<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 								</div>
@@ -175,6 +176,7 @@ h2 {
 								<div class="inputText"></div>
 								<input type="text" name="" class="input" placeholder="Cognome"
 									th:field="*{cognome}">
+									Cognome del Fotografo
 								<div class="warning">
 									<span th:if="${#fields.hasErrors('cognome')}"
 										th:errors="*{cognome}"></span>
@@ -184,7 +186,7 @@ h2 {
 					</div>
 
 					<div class="row">
-						<div class="col-sm-12">
+						<div class="col-sm-12 btn btn-lg btn-primary">
 							<input type="submit" name=""
 								class="btn btn-primary btn-lg btn-block"
 								value="Conferma inserimento">

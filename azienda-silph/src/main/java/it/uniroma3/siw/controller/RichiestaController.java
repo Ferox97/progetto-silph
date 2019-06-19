@@ -16,6 +16,7 @@ import it.uniroma3.siw.model.Funzionario;
 import it.uniroma3.siw.model.Richiesta;
 
 import it.uniroma3.siw.service.RichiestaService;
+import it.uniroma3.siw.service.RichiestaValidator;
 
 @Controller
 public class RichiestaController {
@@ -35,13 +36,26 @@ public class RichiestaController {
 		return "richieste.html";
 	}
 	
+	@Autowired
+	RichiestaValidator richiestaValidator;
+	
 	@RequestMapping(value="/addRichiesta", method = RequestMethod.POST)
     public String newRichiesta(@Valid @ModelAttribute("richiesta") Richiesta richiesta, Model model, BindingResult bindingResult) {
     	
+		richiestaValidator.validate(richiesta , bindingResult);
+		
+		if(bindingResult.hasErrors()) {
+			
+			return "aggiungiRichiesta";
+			
+		} else {
+		
         this.richiestaService.inserisci(richiesta); //esegui il persistence
         model.addAttribute("funzionario" , new Funzionario());
  
       return "index.html";
+      
+		}
       
     }
 	

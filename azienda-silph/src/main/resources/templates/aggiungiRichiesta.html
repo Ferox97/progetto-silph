@@ -156,7 +156,7 @@ h2 {
 					th:object="${richiesta}">
 					<div class="row">
 						<div class="col-sm-12">
-							<h1>Nuova Richiesta</h1>
+							<h1>Aggiungi una nuova Richiesta</h1>
 						</div>
 					</div>
 
@@ -166,6 +166,7 @@ h2 {
 								<div class="inputText"></div>
 								<input type="text" name="" class="input" placeholder="Email"
 									th:field="*{mail}">
+									Inserisci qui la tua Email
 								<div class="warning">
 									<span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></span>
 								</div>
@@ -178,6 +179,7 @@ h2 {
 								<input type="text" name="" class="input"
 									placeholder="Scrivi qui i Dettagli"
 									th:field="*{dettaglioRichiesta}">
+									Inserisci la tua richiesta ed un Funzionario la valuterà in 24/48 h
 								<div class="warning">
 									<span th:if="${#fields.hasErrors('dettaglioRichiesta')}"
 										th:errors="*{dettaglioRichiesta}"></span>
@@ -187,9 +189,10 @@ h2 {
 					</div>
 
 					<div class="row">
-						<div class="col-sm-12">
+						<div class="col-sm-12 btn btn-lg btn-primary">
 							<input type="submit" name=""
-								class="btn btn-primary btn-lg btn-block" value="Conferma">
+								class="btn btn-primary btn-lg btn-block"
+								value="Conferma inserimento">
 						</div>
 					</div>
 				</form>
