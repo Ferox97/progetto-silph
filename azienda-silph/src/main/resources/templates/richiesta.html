@@ -82,10 +82,18 @@ body {
 }
 
 h2 {
-	color: #fff;
+	color: #03A9F4;
 	margin-bottom: 40px;
 	text-align: center;
 	font-weight: 100;
+}
+
+h4 {
+	color: white;
+}
+
+span {
+	font-color: white;
 }
 </style>
 
@@ -149,12 +157,22 @@ h2 {
 		<!-- end top -->
 	</header>
 	<div class="container" style="margin-top: 100px;">
-		<h2>Richiesta</h2>
-			<br> Mail: <span th:text="${mail}"></span>
-			<hr>
-			Dettagli: <span th:text="${dettaglioRichiesta}"></span> <br>
-			<br>
-		</div>
+		<h2>
+			Richiesta numero <span th:text="${id}"></span>
+		</h2>
+
+		<h4 align="center">
+			Mail: <span th:text="${mail}"></span>
+		</h4>
 	</div>
+	<br>
+
+	<h4 align="center">
+		Dettagli: <span th:text="${dettaglioRichiesta}"></span>
+	</h4>
+
+	<br>
+	<br>
+
 </body>
 </html>

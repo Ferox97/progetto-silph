@@ -87,6 +87,7 @@ h2 {
 	text-align: center;
 	font-weight: 100;
 }
+
 </style>
 
 <link rel="stylesheet" type="text/css"
@@ -111,26 +112,29 @@ h2 {
 								<li class="current"><a href="/" class="external">Home</a></li>
 							</ul>
 							<ul class="nav pull-right">
-								
+
 								<li><a sec:authorize="isAnonymous()" href="/"
 									class="text-white external">Effettua il Login</a></li>
-								
+
 								<li><a sec:authorize="isAuthenticated()" href="/logout"
 									class="text-white external">Effettua il logout</a></li>
-									
+
 								<li class="dropdown"><a href="#">Richieste</a>
 									<ul class="dropdown-menu">
-										<li><a href="/aggiungiRichiesta" class="external">Aggiungi Richiesta</a></li>
-										<li><a sec:authorize="isAuthenticated()" href="/allRichieste" class="external">Visualizza Richieste</a></li>
-									</ul>								
-								
+										<li><a href="/aggiungiRichiesta" class="external">Aggiungi
+												Richiesta</a></li>
+										<li><a sec:authorize="isAuthenticated()"
+											href="/allRichieste" class="external">Visualizza
+												Richieste</a></li>
+									</ul>
 								<li class="dropdown"><a href="#">Visualizza</a>
 									<ul class="dropdown-menu">
 										<li><a href="/allFotografie" class="external">Fotografie</a></li>
 										<li><a href="/allAlbum" class="external">Album</a></li>
 										<li><a href="/allFotografi" class="external">Fotografi</a></li>
 									</ul>
-								<li class="dropdown"><a sec:authorize="isAuthenticated()" href="#">Aggiungi</a>
+								<li class="dropdown"><a sec:authorize="isAuthenticated()"
+									href="#">Aggiungi</a>
 									<ul class="dropdown-menu">
 										<li><a href="/aggiungiFotografia" class="external">Fotografie</a></li>
 										<li><a href="/aggiungiAlbum" class="external">Album</a></li>
@@ -146,9 +150,10 @@ h2 {
 		<!-- end top -->
 	</header>
 	<div class="container-fluid">
-										<div class="container">
+		<div class="container">
 			<div class="formBox">
-				<form th:action="@{/addRichiesta}" th:method="post" th:object="${richiesta}">
+				<form th:action="@{/addRichiesta}" th:method="post"
+					th:object="${richiesta}">
 					<div class="row">
 						<div class="col-sm-12">
 							<h1>Nuova Richiesta</h1>
@@ -160,7 +165,7 @@ h2 {
 							<div class="inputBox ">
 								<div class="inputText"></div>
 								<input type="text" name="" class="input" placeholder="Email"
-																	th:field="*{mail}">
+									th:field="*{mail}">
 								<div class="warning">
 									<span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></span>
 								</div>
@@ -171,10 +176,11 @@ h2 {
 							<div class="inputBox">
 								<div class="inputText"></div>
 								<input type="text" name="" class="input"
-																	placeholder="Scrivi qui i Dettagli" th:field="*{dettaglioRichiesta}">
+									placeholder="Scrivi qui i Dettagli"
+									th:field="*{dettaglioRichiesta}">
 								<div class="warning">
 									<span th:if="${#fields.hasErrors('dettaglioRichiesta')}"
-																		th:errors="*{dettaglioRichiesta}"></span>
+										th:errors="*{dettaglioRichiesta}"></span>
 								</div>
 							</div>
 						</div>
@@ -182,14 +188,12 @@ h2 {
 
 					<div class="row">
 						<div class="col-sm-12">
-							<input type="submit" name="" class="button btn btn-primary"
-																value="Conferma inserimento">
+							<input type="submit" name=""
+								class="btn btn-primary btn-lg btn-block" value="Conferma">
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
-	</div>
-
-								</body>
+</body>
 </html>
